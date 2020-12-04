@@ -1,5 +1,5 @@
 # AirMouse-Project
-This is part of the **ubiquitous computing** class from the software engineer carrer in UDLA.
+This is part of the **ubiquitous computing** class from the software engineer carreer in UDLA.
 
 # Main Goal 
 The main goal of this project was to develop an app using App Inventor that could manage data from different sensors that are included in your smarthphone. 
