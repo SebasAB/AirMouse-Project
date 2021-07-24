@@ -5,34 +5,34 @@ mouse = Controller()
 
 def air_mouse(): 
 	while True:
-		click_count = 0 #to count when left click is used to press or to release 
-		f = open("data.txt", "r") #open the txt file to read data
-		line = f.readlines() #line will be a list that each list item will be, either a 1 or 0, or a line with x, y and z axis data
-		line = line[-1] #line will take the value of the last item (the newest) of the list
-		if (len(line)<=1): #if the line lenght only has 1 item then it is either left or right click
-			if (int(line)==0): #if the number is equal to 0 it means that right click is being, clicked
-				mouse.press(Button, right) #this click right click 
-				mouse.release(Button, left) #this release right click
-			else: #if it's not 0 it means it's 1 so left click will be clicked
-				if click_count > 0: #if there's already clicked it will be released
+		click_count = 0 
+		f = open("data.txt", "r") 
+		line = f.readlines()
+		line = line[-1] 
+		if (len(line)<=1):
+			# Handling the inputs to move the mouse
+			if (int(line)==0): 
+				mouse.press(Button, right)
+				mouse.release(Button, left) 
+			else: 
+				if click_count > 0: 
 					mouse.release(Button, left)
 					click_count-=1
 				else: 
-					mouse.press(Button, left) #if its not clicked it will be clicked
-					click_count+=1
+					mouse.press(Button, left)
 
 		else: 
-			accec = line.split(";") #this will separate into a new array the items in the last line, separated by ";"
-			x = float(accec[0]) #the x axis will be the position 0, all of them will be converted from str to float 
-			y = float(accec[1]) #the y axis will be the position 1 
-			z = float(accec[2]) #the z axis will be the position 2
+			accec = line.split(";") 
+			x = float(accec[0])
+			y = float(accec[1])
+			z = float(accec[2])
 			mouse.move(-x/2, z) 
 
-		if not line: #if the line is empty the program will stop
+		if not line: 
 			break 
 
-		f.close() #the file will be closed
-		time.sleep(0.05) #the program will wait 0.05s until the next iteration 
+		f.close() 
+		time.sleep(0.05) 
 
 
 def drawing(): 
@@ -40,5 +40,5 @@ def drawing():
 
 
 if __name__ == "__main__":
-	drawing() #this runs the drawing function
-	air_mouse() #this just runs the air_mouse function 
+	drawing() 
+	air_mouse() 
